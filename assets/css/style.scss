@@ -5,8 +5,9 @@
 .page-header {
 	padding: 1rem 6rem;
 }
-.project-name,project-tagline{
+.project-name,.project-tagline{
 	float:left;
+	display:inline;
 }
 .page-header>a{
 	float:right;
