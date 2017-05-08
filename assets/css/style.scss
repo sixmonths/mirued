@@ -2,14 +2,20 @@
 ---
 
 @import "{{ site.theme }}";
+.page-header {
+	padding: 1rem 6rem;
+}
+.page-header>div{
+	clear:both;
+}
 @media screen and (min-width: 64em) {
-    .page-header {
-        padding: 1rem 6rem;
-    }
+	.page-header {
+		padding: 1rem 6rem;
+	}
 }
 
 @media screen and (min-width: 42em) and (max-width: 64em) {
-    .page-header {
-        padding: 1rem 4rem;
-    }
+	.page-header {
+		padding: 1rem 4rem;
+	}
 }
