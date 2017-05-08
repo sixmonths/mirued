@@ -5,6 +5,12 @@
 .page-header {
 	padding: 1rem 6rem;
 }
+.project-name,project-tagline{
+	float:left;
+}
+.page-header>a{
+	float:right;
+}
 .page-header>div{
 	clear:both;
 }
