@@ -3,8 +3,11 @@
 本章介绍Apache Nutch的安装，同时提供了如何利用他进行crwl,parse,以及创建plugin的方法。
 基本环境
 >Centos 6.8x64 on VM
+
 >Xshell
+
 >vim
+
 #### 1.介绍
 
 可单机运行，也可以在分布式环境中使用。
@@ -194,7 +197,7 @@ ant clean
 ```
 ant runtime
 ```
->过程比较漫长,如果便宜失败重复执行21和22
+>过程比较漫长,如果编译失败重复执行21和22
 
 23)切换到nutch rutime/local目录
 ```
