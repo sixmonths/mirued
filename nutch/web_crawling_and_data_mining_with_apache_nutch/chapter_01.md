@@ -16,7 +16,7 @@
 
 #### 2.安装以及配置Apache  Nutch
 
-##### 2.1安装Java
+##### 2.1安装Java(版本不同操作可能会有所差异)
 
 1)opt目录下创建java文件夹
 ```
@@ -120,7 +120,7 @@ tar -zxvf hbase-0.90.4.tar.gz
 ```
 cd hbase-0.90.4 && mkdir data && mkdir zookeeperdata
 ```
-8)编辑Hbase下的hbase-site.xml
+8)编辑Hbase conf目录下的hbase-site.xml
 ```
 vim /opt/hbase/hbase-0.90.4/conf/hbase-site.xml
 ```
