@@ -251,11 +251,52 @@ wget http://archive.apache.org/dist/lucene/solr/3.6.2/apache-solr-3.6.2.tgz
 ```
 tar -zxvf apache-solr-3.6.2.tgz
 ```
-
-##### 2.6爬取网站
-1)编辑conf/nutch-site.xml文件
+4)编辑bashrc文件
 ```
-vim conf/nutch-site.xml
+vim ~/.bashrc
+```
+5)添加如下内容，保存退出
+```
+export SOLR_HOME=/opt/solr/apache-solr-3.6.2
+```
+6)切换到solr example目录下
+```
+cd /opt/solr/apache-solr-3.6.2/example
+```
+7)运行命令
+```
+java -jar start.jar
+```
+8)运行成功将显示一下信息
+```
+May 15, 2017 10:13:52 PM org.apache.solr.core.SolrResourceLoader locateSolrHome
+INFO: JNDI not configured for solr (NoInitialContextEx)
+May 15, 2017 10:13:52 PM org.apache.solr.core.SolrResourceLoader locateSolrHome
+INFO: solr home defaulted to 'solr/' (could not find system property or JNDI)
+May 15, 2017 10:13:52 PM org.apache.solr.servlet.SolrUpdateServlet init
+INFO: SolrUpdateServlet.init() done
+2017-05-15 22:13:52.565:INFO::Started SocketConnector@0.0.0.0:8983
+
+```
+9)浏览器输入地址
+```
+http://loalhost:8983/solr/admin
+```
+10)得到如下信息
+![图片](./imgs/1_1.png)
+
+11)复制schema.xml
+```
+cp /opt/nutch/nutch-release-2.3/conf/schema.xml /opt/solr/apache-solr-3.6.2/example/solr/conf/
+```
+12)运行solr
+```
+nohup java -jar start.jar >logs/log.txt &
+```
+##### 2.6爬取网站
+1)编辑nutch runtime/local/conf下nutch-site.xml文件
+```
+cd /opt/nutch/nutch-release-2.3/runtime/local/ && vim conf/nutch-site.xml
 ```
 2)configuration标签下添加如下内容,保存退出
 ```
@@ -268,7 +309,7 @@ vim conf/nutch-site.xml
 ```
 mkdir -p urls &&  echo "http://nutch.apache.org/" >>urls/seed.txt
 ```
-4)修改conf/regex-urlfilters.txt文件
+4)修改conf/regex-urlfilters.txt文件（文档行上讲的是在nutch根目录下）
 ```
 vim conf/regex-urlfilters.txt
 ```
