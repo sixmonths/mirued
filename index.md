@@ -1,4 +1,3 @@
 ## BookNoteList
 
-- [Spring](/spring)
-- [Nutch](/nutch)
+- [hbase](/hbase)

@@ -285,6 +285,8 @@ http://loalhost:8983/solr/admin
 10)得到如下信息
 ![图片](./imgs/1_1.png)
 
+#### 6.Integration Solr with Nutch
+
 11)复制schema.xml
 ```
 cp /opt/nutch/nutch-release-2.3/conf/schema.xml /opt/solr/apache-solr-3.6.2/example/solr/conf/
@@ -328,11 +330,59 @@ vim conf/regex-urlfilters.txt
 
 #### 5.Setting up Apache Solr for search
 
-#### 6.Integration Solr with Nutch
+
 
 #### 7.Crawling websites using crawl script
 
+1)切换到Hbase根目录
+```
+cd /opt/hbase/hbase-0.94.26/
+```
+2)执行命令
+```
+./bin/start-hbase.sh
+```
+3)出现如下提示信息表示启动成功
+```
+starting master, logging to /opt/hbase/hbase-0.94.26/bin/../logs/hbase-root-master-mirued.out
+```
+4)出现如下提示信息表示已经启动
+```
+master running as process 5811. Stop it first.
+```
+5)切换到nutch local目录
+```
+cd /opt/nutch/nutch-release-2.3/runtime/local/
+```
+6)执行命令
+```
+bin/crawl urls/seed.txt TestCrawl http://localhost:8983/solr/ 2
+```
+参数说明:
+
+| 参数         | 说明                                                         |
+|--------------|-------------------------------------------------------------:|
+| url/seed.txt | 存放需要爬取地址的文件                                       |
+| TestCrawl    | Hbase自动生成TestCrawl_Webpage数据目录,用来存放Nutch爬取的URL|
+| http:..solr/ | 运行solr的地址                                               |
+| 2            | Nutch迭代次数                                                |
+
+
 #### 8.Crawling the web,URL filters,and the CrawlDb
+
+当用户执行爬取命令的时候，Nutch1.x会将数据存放到文件目录中，而Nutch2.x会存放到数据库中。 <br>
+本示例中，采用HBase作为数据库存储. <br>
+循环爬取有四步，每一步都是Hadoop MapReduce job的实现. <br>
+- GeneratorJob
+- FetcherJob
+- ParserJob(fetch使用 fetch.parse时会执行)
+- DbUpdaterJob
+
+除此之外，需要了解以下过程: <br>
+
+- InjectorJob
+- Invertlinks
+- Indexing with Apache Solr
 
 #### 9.Parsing and parsing filters
 
